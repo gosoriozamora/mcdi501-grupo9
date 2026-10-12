@@ -1,0 +1,33 @@
+# Entornos, kernels locales y archivos temporales
+.venv/
+venv/
+.local/
+.jupyter/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+~$*
+
+# Datos locales de todas las entregas; publicar solo sus instrucciones
+**/datos_originales/**
+!**/datos_originales/README.md
+**/datos_trabajo/**
+!**/datos_trabajo/README.md
+*.csv
+*.tsv
+*.sav
+*.zsav
+*.parquet
+*.zip
+
+# Resultados generados localmente; seleccionar los entregables por separado
+**/resultados/**
+!**/resultados/README.md
