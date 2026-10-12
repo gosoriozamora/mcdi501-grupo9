@@ -2,7 +2,7 @@
 setlocal
 cd /d "%~dp0"
 if not exist ".venv\Scripts\python.exe" (
-    echo Prepara el entorno siguiendo docs\Entorno_y_trabajo_en_equipo.md.
+    echo Prepara el entorno siguiendo README.md.
     pause
     exit /b 1
 )
@@ -15,6 +15,6 @@ set "MPLCONFIGDIR=%CD%\.local\matplotlib"
 if not exist ".local\runtime" mkdir ".local\runtime"
 echo Abriendo JupyterLab. Conserva esta ventana mientras trabajas.
 echo Para detener el servidor, presiona Ctrl+C.
-".venv\Scripts\python.exe" -m jupyterlab --ServerApp.ip=127.0.0.1 --ServerApp.root_dir="%CD%" --ServerApp.default_url=/lab/tree/Formativa_1/formativa_1_online_shoppers.ipynb
+".venv\Scripts\python.exe" -m jupyterlab --ServerApp.ip=127.0.0.1 --ServerApp.root_dir="%CD%" --LabApp.default_url=/lab/tree/Sumativa_1/02_Sumativa1.ipynb
 if errorlevel 1 pause
 endlocal

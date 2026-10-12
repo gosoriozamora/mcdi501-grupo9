@@ -1,10 +1,8 @@
-# mcdi501-grupo9 — Estadística Computacional
+# Sumativa 1 — Estadística Computacional
 
-Repositorio público: [gosoriozamora/mcdi501-grupo9](https://github.com/gosoriozamora/mcdi501-grupo9).
+Repositorio de la Sumativa 1 del ramo MCDI501, Grupo 9: [gosoriozamora/mcdi501-grupo9](https://github.com/gosoriozamora/mcdi501-grupo9).
 
-Repositorio del ramo MCDI501. Equipo: Guillermo Osorio Zamora y Karla Patricia Pizarro Correa, Grupo 9. Docente: Jean Maidana.
-
-Cada integrante trabaja en una copia local en `C:\Users\<usuario>\Proyectos\mcdi501-grupo9`. El repositorio y su entorno deben estar fuera de P y de la carpeta sincronizada de pCloud. Los datasets permanecen locales; compartimos código, notebooks, informes e instrucciones mediante GitHub.
+El análisis responde: **¿Cómo difieren las características de navegación entre las sesiones con compra y sin compra?** Se describen y estiman el tiempo en páginas de productos, la cantidad de páginas de productos y la cantidad de páginas administrativas. Se realizan dos pruebas t de Welch: una para el tiempo promedio y otra para la cantidad promedio de páginas de productos.
 
 ## Organización
 
@@ -14,73 +12,65 @@ mcdi501-grupo9/
 ├── requirements.txt
 ├── requirements-directas.txt
 ├── Abrir-JupyterLab.cmd
-├── docs/
-│   └── Entorno_y_trabajo_en_equipo.md
-├── Formativa_1/
-│   ├── README.md
-│   ├── 00_preparar_datos.ipynb
-│   ├── formativa_1_online_shoppers.ipynb
-│   ├── informe_formativa_1.docx
-│   ├── Verificacion_formativa_1.md
-│   ├── datos_originales/
-│   ├── datos_trabajo/
-│   └── resultados/
 └── Sumativa_1/
     ├── 01_preparar_datos.ipynb
     ├── 02_Sumativa1.ipynb
     ├── datos_originales/
-    │   ├── README.md
-    │   └── online_shoppers_intention.csv
+    │   └── README.md
     └── datos_trabajo/
-        ├── README.md
-        ├── online_shoppers_mcar.csv
-        ├── valores_ocultados.csv
-        └── preparacion.json
+        └── README.md
 ```
 
-Cada actividad tiene su propia carpeta; `Sumativa_1` contiene la preparación y el análisis vigentes. La planificación interna permanece en la carpeta de la asignatura, fuera de este repositorio.
+Los CSV se descargan y preparan localmente siguiendo los README de datos; no se incluyen en GitHub. La `.venv`, la configuración local y los checkpoints también están excluidos de Git.
 
-## Abrir y trabajar
+## Descargar e instalar
 
-1. Preparar la `.venv` siguiendo [Entorno y trabajo en equipo](docs/Entorno_y_trabajo_en_equipo.md). Usamos Python 3.13.15 y las versiones fijadas en `requirements.txt`.
-2. Abrir `Abrir-JupyterLab.cmd` y elegir **Python (Estadistica Computacional)**.
-3. Entrar en la carpeta de la actividad y seguir el flujo correspondiente.
+En Windows, abrir **Git Bash**. Si todavía no existe una copia en `~/Proyectos/mcdi501-grupo9`:
 
-### Formativa 1
+```bash
+mkdir -p ~/Proyectos
+cd ~/Proyectos
+git clone https://github.com/gosoriozamora/mcdi501-grupo9.git
+cd mcdi501-grupo9
+```
 
-1. Entrar en `Formativa_1`. En un equipo nuevo, descargar el CSV siguiendo [Datos originales](Formativa_1/datos_originales/README.md) y ejecutar `00_preparar_datos.ipynb` una vez.
-2. Abrir `formativa_1_online_shoppers.ipynb` y estudiar las celdas de arriba hacia abajo. Sus rutas se leen desde la carpeta `Formativa_1`.
-3. Revisar el informe Word junto con los resultados del notebook.
+Si la carpeta ya existe, revisar su contenido antes de continuar; no clonar sobre ella. El repositorio y el entorno deben estar en el disco local, fuera de carpetas sincronizadas.
 
-### Sumativa 1
+Usamos **Python 3.13.15 de 64 bits**. Comprobar la instalación:
 
-1. Entrar en `Sumativa_1`. En un equipo nuevo, obtener el CSV según [Datos originales](Sumativa_1/datos_originales/README.md).
-2. Ejecutar [01_preparar_datos.ipynb](Sumativa_1/01_preparar_datos.ipynb). Si los archivos de trabajo y respaldo ya existen, los reutiliza sin volver a sortear ni sobrescribirlos.
-3. Abrir [02_Sumativa1.ipynb](Sumativa_1/02_Sumativa1.ipynb) y ejecutar sus celdas en orden. Es el notebook de análisis vigente; sus rutas relativas se leen desde `Sumativa_1`.
-4. Consultar [Datos de trabajo](Sumativa_1/datos_trabajo/README.md) para identificar los CSV y verificar la copia utilizada.
+```bash
+py -3.13 --version
+py -3.13 -c "import struct; print(struct.calcsize('P') * 8)"
+```
 
-El análisis utiliza NumPy, pandas, SciPy, Matplotlib y Seaborn. La preparación conserva `pathlib`, que forma parte de la biblioteca estándar de Python y no requiere una instalación adicional. Las dependencias directas se enumeran en `requirements-directas.txt` y sus versiones completas están fijadas en `requirements.txt`.
+Los resultados esperados son `Python 3.13.15` y `64`. Desde la raíz del repositorio, para una copia que todavía no tenga `.venv`:
 
-En el equipo de Guillermo los datos ya están preparados; puede comenzar directamente por el notebook principal. No se copia la carpeta `.venv` al equipo de Karla: ella creará su propio entorno con las mismas versiones.
+```bash
+py -3.13 -m venv .venv
+source .venv/Scripts/activate
+python -m pip install -r requirements.txt
+python -m pip check
+python -m ipykernel install --sys-prefix --name estadistica_computacional --display-name "Python (Estadistica Computacional)"
+```
 
-## Estado de Formativa 1
+Cada equipo crea su propio entorno. Las dependencias directas se enumeran en `requirements-directas.txt`; sus versiones completas están fijadas en `requirements.txt`. El análisis utiliza NumPy, pandas, SciPy, Matplotlib y Seaborn. La preparación utiliza además `pathlib`, incluido en la biblioteca estándar de Python.
 
-La [versión básica](Formativa_1/README.md) sigue los tutoriales de la semana 1: calidad de datos, descriptiva, histogramas, diagramas de cajas, intervalos de confianza y Welch. El notebook principal tiene 49 celdas, de las cuales 20 son de código. Está ejecutado sin errores. El informe Word tiene 10 páginas, incluida la portada, el índice y las referencias, y se revisó visualmente.
+## Preparar los datos y ejecutar
 
-La preparación de datos está en un notebook separado. Se comprobó que en una carpeta nueva produce exactamente los mismos CSV y que, al repetirla, reutiliza los archivos. Los datos originales y preparados anteriores no cambiaron. Las [comprobaciones](Formativa_1/Verificacion_formativa_1.md) indican las cifras esperadas y la cobertura de la rúbrica.
+1. Obtener `online_shoppers_intention.csv` según [Datos originales](Sumativa_1/datos_originales/README.md) y colocarlo en `Sumativa_1/datos_originales/`.
+2. Abrir `Abrir-JupyterLab.cmd`. El acceso abre [02_Sumativa1.ipynb](Sumativa_1/02_Sumativa1.ipynb) y usa la `.venv` del repositorio. Seleccionar **Python (Estadistica Computacional)**.
+3. En un equipo nuevo, abrir primero [01_preparar_datos.ipynb](Sumativa_1/01_preparar_datos.ipynb) desde la carpeta `Sumativa_1` y ejecutar sus celdas en orden. Si los archivos de trabajo y respaldo ya existen, se reutilizan sin volver a sortear ni sobrescribirlos.
+4. Volver a `02_Sumativa1.ipynb`, reiniciar el kernel y ejecutar todas las celdas en orden. Las rutas relativas del análisis se leen desde `Sumativa_1`.
+5. Consultar [Datos de trabajo](Sumativa_1/datos_trabajo/README.md) para identificar los archivos locales y sus huellas de verificación.
 
-Las versiones anteriores están respaldadas localmente en `.local`, excluida de Git. El único informe vigente es el Word; el PDF de entrega se exportará desde ese archivo después de la aprobación.
+La copia de trabajo contiene 12.330 sesiones y 1.233 valores faltantes en `ProductRelated_Duration`, seleccionados con semilla 42. El archivo de respaldo conserva las posiciones y los valores originales.
 
-## Estado de Sumativa 1
+## Estado del entregable
 
-El notebook vigente es [02_Sumativa1.ipynb](Sumativa_1/02_Sumativa1.ipynb), con 52 celdas, de las cuales 16 son de código. Contiene el análisis descriptivo, seis intervalos de confianza del 95% para tres variables en dos grupos y dos pruebas t de Welch. Conserva los resultados de la ejecución verificada sin errores.
+El notebook vigente es `02_Sumativa1.ipynb`, con 52 celdas, de las cuales 16 son de código. Incluye análisis descriptivo, seis intervalos de confianza del 95% para tres variables en dos grupos y dos pruebas t de Welch, con resultados e interpretaciones.
 
-La copia de trabajo contiene 12.330 sesiones y 1.233 valores faltantes en `ProductRelated_Duration`, seleccionados con semilla 42. El respaldo conserva las posiciones y los valores originales. `Sumativa_1/datos_trabajo/preparacion.json` registra las características y huellas de los archivos locales utilizados.
+**El informe técnico de Sumativa 1 sigue pendiente.** Los archivos de `.ipynb_checkpoints` son respaldos automáticos de Jupyter y no corresponden a las versiones vigentes de entrega.
 
-El informe técnico de Sumativa 1 sigue pendiente. Los archivos de `.ipynb_checkpoints` son respaldos automáticos de Jupyter y están excluidos de Git; no son las versiones vigentes de entrega.
+## Colaboración
 
-## Trabajo compartido
-
-Seguiremos la organización de ENSSEX: copias locales, ramas por tarea y revisión cruzada mediante pull request. Coordinar quién edita cada notebook para evitar cambios simultáneos. Los CSV, resultados sueltos, entornos y respaldos están excluidos de Git; el notebook sí incluye sus salidas guardadas.
-
-**Orden pendiente de Formativa 1:** reproducir en el disco C del equipo de Karla → revisar y exportar el PDF de entrega → entregar en Canvas y participar en el foro. La publicación del repositorio no sustituye la ejecución y revisión del trabajo en el equipo de Karla.
+Revisar `git status` y actualizar la copia antes de comenzar, conservando cualquier cambio local. Trabajar con ramas por tarea y revisión cruzada mediante pull request. Coordinar la edición de los notebooks para evitar cambios simultáneos. Antes de compartirlos, comprobar su ejecución y revisar las salidas guardadas.
