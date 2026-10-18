@@ -1,6 +1,6 @@
-# Sumativa 1 — Estadística Computacional
+# Estadística Computacional — Grupo 9
 
-Repositorio de la Sumativa 1 del ramo MCDI501, Grupo 9: [gosoriozamora/mcdi501-grupo9](https://github.com/gosoriozamora/mcdi501-grupo9).
+Repositorio del proyecto del ramo MCDI501, Grupo 9: [gosoriozamora/mcdi501-grupo9](https://github.com/gosoriozamora/mcdi501-grupo9).
 
 El análisis responde: **¿Cómo difieren las características de navegación entre las sesiones con compra y sin compra?** Se describen y estiman el tiempo en páginas de productos, la cantidad de páginas de productos y la cantidad de páginas administrativas. Se realizan dos pruebas t de Welch: una para el tiempo promedio y otra para la cantidad promedio de páginas de productos.
 
@@ -12,13 +12,19 @@ mcdi501-grupo9/
 ├── requirements.txt
 ├── requirements-directas.txt
 ├── Abrir-JupyterLab.cmd
-└── Sumativa_1/
-    ├── 01_preparar_datos.ipynb
-    ├── 02_Sumativa1.ipynb
-    ├── datos_originales/
-    │   └── README.md
-    └── datos_trabajo/
-        └── README.md
+├── Sumativa_1/
+│   ├── 01_preparar_datos.ipynb
+│   ├── 02_Sumativa1.ipynb
+│   ├── datos_originales/
+│   │   └── README.md
+│   └── datos_trabajo/
+│       └── README.md
+└── Sumativa_2/
+    ├── 01_Sumativa2.ipynb
+    ├── README.md
+    ├── Resultados_validados.json
+    ├── figuras/
+    └── resultados/
 ```
 
 Los CSV se descargan y preparan localmente siguiendo los README de datos; no se incluyen en GitHub. La `.venv`, la configuración local y los checkpoints también están excluidos de Git.
@@ -69,8 +75,17 @@ La copia de trabajo contiene 12.330 sesiones y 1.233 valores faltantes en `Produ
 
 El notebook vigente es `02_Sumativa1.ipynb`, con 52 celdas, de las cuales 16 son de código. Incluye análisis descriptivo, seis intervalos de confianza del 95% para tres variables en dos grupos y dos pruebas t de Welch, con resultados e interpretaciones.
 
-**El informe técnico de Sumativa 1 sigue pendiente.** Los archivos de `.ipynb_checkpoints` son respaldos automáticos de Jupyter y no corresponden a las versiones vigentes de entrega.
+Los informes se mantienen en las carpetas académicas de entregas de cada sumativa. Los archivos de `.ipynb_checkpoints` son respaldos automáticos de Jupyter y no corresponden a las versiones vigentes de entrega.
 
 ## Colaboración
 
 Revisar `git status` y actualizar la copia antes de comenzar, conservando cualquier cambio local. Trabajar con ramas por tarea y revisión cruzada mediante pull request. Coordinar la edición de los notebooks para evitar cambios simultáneos. Antes de compartirlos, comprobar su ejecución y revisar las salidas guardadas.
+
+
+## Sumativa 2: validación, simulación y remuestreo
+
+El notebook [01_Sumativa2.ipynb](Sumativa_2/01_Sumativa2.ipynb) continúa el análisis de S1 con los mismos datos y el mismo entorno. Incluye bootstrap de seis medias y dos medianas, dos pruebas de permutación, bootstrap de tres correlaciones, simulación Monte Carlo y análisis de sensibilidad. Los procedimientos principales utilizan 10.000 repeticiones.
+
+Abrir el notebook desde la carpeta `Sumativa_2`, seleccionar el kernel del proyecto y ejecutar todas sus celdas desde un kernel reiniciado. Requiere los tres CSV de S1 ya preparados; no modifica esos archivos ni el notebook anterior. Las instrucciones y límites del análisis están en [README de S2](Sumativa_2/README.md). El archivo [Resultados validados](Sumativa_2/Resultados_validados.json) conserva el resumen numérico para S3.
+
+`Sumativa_1/` y `Sumativa_2/` corresponden a las etapas S1 y S2 del enunciado. Los documentos Word/PDF se guardan en la carpeta académica `03_Trabajos/Sumativa_2`. Esta preparación local no publica cambios en GitHub.
